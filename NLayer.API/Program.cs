@@ -37,6 +37,8 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+//Cache ekle
+builder.Services.AddMemoryCache();
 
 builder.Services.AddScoped(typeof(NotFoundFilter<>));
 //builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
@@ -62,6 +64,7 @@ builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 
 //Modules klasöründe tanýmladýðýmýz "Autofac" RepoServiceModule burada belirtiliyor. 
 builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder => containerBuilder.RegisterModule( new RepoServiceModule()));
+
 
 
 var app = builder.Build();
